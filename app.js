@@ -12,7 +12,10 @@ var express = require('express'),
 app.use(bodyParser());
 app.use('/', express.static('static' + '/'));
 app.use('/', routes);
-app.listen(process.env.PORT || 8080, console.log("Server running on port: 8080"));
+
+var port = process.env.PORT || 8080;
+
+app.listen(port, console.log("Server running on port: " + port));
 
 var job = scheduler.scheduleJob(scheduler.rule, function() {
     console.log('Running automated process. Stand By...');
