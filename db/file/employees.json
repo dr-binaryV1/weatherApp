@@ -1,0 +1,31 @@
+{
+  "employees" : [
+    {
+      "name": "David Jenkins",
+      "address1": "57 Goldsmith Villa",
+      "city": "Kingston",
+      "country": "jm",
+      "telephoneNo": "123-456-2345",
+      "role": "IT",
+      "email": "developerdamian@gmail.com"
+    },
+    {
+      "name": "Daryan Wynter",
+      "address1": "57 Goldsmith Villa",
+      "city": "Mobay",
+      "country": "jm",
+      "telephoneNo": "123-456-2345",
+      "role": "Operations Manager",
+      "email": "developerdamian@gmail.com"
+    },
+    {
+      "name": "Damian Wynter",
+      "address1": "57 Goldsmith Villa",
+      "city": "Mobay",
+      "country": "jm",
+      "telephoneNo": "123-456-2345",
+      "role": "IT",
+      "email": "developerdamian@gmail.com"
+    }
+  ]
+}
