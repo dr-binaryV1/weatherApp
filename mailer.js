@@ -4,8 +4,8 @@ const nodeMailer = require('nodemailer');
 var transporter = nodeMailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'developerdamian@gmail.com', // Enter administrative email here
-        pass: 'Diamond0000' // Enter Password for email here
+        user: 'Enter Admin Email Address', // Enter administrative email here
+        pass: 'Enter Admin Password' // Enter Password for email here
     }
 });
 
