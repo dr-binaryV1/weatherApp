@@ -7,22 +7,56 @@ document.getElementById("requestForecast").onclick = function () {
                 document.getElementById("submitEmail").disabled = false;
 
                 var jsonBody = JSON.parse(xmlhttp.responseText);
+
+                function getIsRainy(index, i){
+                    if(jsonBody[index].forecast[i].isRainy === false){
+                        return "Sunny";
+                    } else {
+                        return "Rainy";
+                    }
+                }
+
+                function getIcon(index, i){
+                    if(jsonBody[index].forecast[i].isRainy === false){
+                        return "../images/sunny-icon.png";
+                    } else {
+                        return "../images/rain.png";
+                    }
+                }
+
+                function getLabel(index, i){
+                    if(index === 0){
+                        return "Today";
+                    } else if(index === 1) {
+                        return "Tomorrow";
+                    } else {
+                        var dateTime = jsonBody[i].forecast[index].dateTime;
+                        dateTime = new Date(dateTime * 1000);
+                        var day = dateTime.toDateString();
+                        day = day.split(" ");
+                        return day[0];
+                    }
+                }
+
                 for(var i=0; i < jsonBody.length; i++) {
-                    if (jsonBody[i].city === "Mobay" && jsonBody[i].isRainy === false) {
-                        document.getElementById("mobayCondition").innerHTML = "Sunny";
-                        document.getElementById("mobayIcon").setAttribute("src", "images/sunny-icon.png");
-                    } else if (jsonBody[i].city === "Mobay" && jsonBody[i].isRainy === true) {
-                        document.getElementById("mobayCondition").innerHTML = "Rainy";
-                        document.getElementById("mobayIcon").setAttribute("src", "images/rain.png");
+                    document.getElementById("forecasts").innerHTML += "<br>" +
+                        "<div id='"+jsonBody[i].city+"forecast' align='center' style='width: 100%; float: right'>" +
+                            "<h1 align='center'>"+ jsonBody[i].city +" Forecast</h1>" +
+                        "</div>";
+                    for(var y = 0; y < jsonBody[i].forecast.length; y++){
+                        document.getElementById(jsonBody[i].city+"forecast").innerHTML += "" +
+                            "<div style='float:left'>" +
+                            "<h2>"+ getLabel(y, i) +"</h2>" +
+                            "<h4>"+ getIsRainy(i, y) +"</h4>" +
+                            "<p>"+ jsonBody[i].forecast[y].desc +"</p>" +
+                            "<img src='"+ getIcon(i, y) +"' width='250' height='250' />" +
+                            "</div>"
                     }
 
-                    if (jsonBody[i].city === "Kingston" && jsonBody[i].isRainy === false) {
-                        document.getElementById("kingstonCondition").innerHTML = "Sunny";
-                        document.getElementById("kgnIcon").setAttribute("src", "images/sunny-icon.png");
-                    } else if (jsonBody[i].city === "Kingston" && jsonBody[i].isRainy === true) {
-                        document.getElementById("kingstonCondition").innerHTML = "Rainy";
-                        document.getElementById("kgnIcon").setAttribute("src", "images/rain.png");
-                    }
+                    document.getElementById("forecasts").innerHTML += "<br/>";
+
+                    document.getElementById("cityOption").innerHTML += "<option id='"+jsonBody[i].city+
+                        "'>"+jsonBody[i].city+"</option>"
                 }
 
                 document.getElementById("reqResult").setAttribute("class", "alert alert-info");

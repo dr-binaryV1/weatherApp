@@ -11,27 +11,21 @@
 </head>
 <body>
 <div id="head" style="background-color: #32befa; color: white; padding: 1%">
-    <h1 align="center">Forecast for Tomorrow</h1>
+    <h1 align="center">5 Days Forecast</h1>
 </div>
 <hr>
 <div id="container">
-    <div id="mobayWeather" align="center">
-        <h2>Montego Bay Forecast</h2>
-        <p id="mobayCondition">--</p>
-        <img id="mobayIcon" src="" width="250" height="250"/>
+    <div style="width: 100%" id="forecasts"></div>
+    <div id="requestForecast" style="width: 100%; float: left" align="center">
+        <br /><br /><br />
+        <input type="button" id="request" class="btn btn-primary" value="Send Request">
+        <br /><br />
+        <p id="reqResult"></p>
     </div>
-    <div id="kingstonWeather" align="center">
-        <h2>Kingston Forecast</h2>
-        <p id="kingstonCondition">--</p>
-        <img id="kgnIcon" src="" width="250" height="250"/>
-    </div>
-
     <div id="emailForm" align="center">
         <h2 align="center">Send Email to Employees</h2>
         <form id="send_email">
             <select id="cityOption" class="btn btn-default dropdown-toggle">
-                <option id="Mobay">Mobay</option>
-                <option id="Kingston">Kingston</option>
             </select>
 
             <select id="participants" class="btn btn-default dropdown-toggle">
@@ -47,13 +41,6 @@
         </form>
         <br >
         <p id="result"></p>
-    </div>
-
-    <div id="requestForecast" style="width: 100%; float: left" align="center">
-        <br /><br /><br />
-        <input type="button" id="request" class="btn btn-primary" value="Send Request">
-        <br /><br />
-        <p id="reqResult"></p>
     </div>
 </div>
 </body>
