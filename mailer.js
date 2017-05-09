@@ -1,11 +1,12 @@
 const nodeMailer = require('nodemailer');
+var data = require('./db/file/employees.json');
 
 // create reusable transporter object using the default SMTP transport
 var transporter = nodeMailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'Enter Admin Email Address', // Enter administrative email here
-        pass: 'Enter Admin Password' // Enter Password for email here
+        user: 'developerdamian@gmail.com', // Enter administrative email here
+        pass: 'damian101' // Enter Password for email here
     }
 });
 

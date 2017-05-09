@@ -8,18 +8,18 @@ document.getElementById("requestForecast").onclick = function () {
 
                 var jsonBody = JSON.parse(xmlhttp.responseText);
                 for(var i=0; i < jsonBody.length; i++) {
-                    if (jsonBody[i].mobayIsRainy === false) {
+                    if (jsonBody[i].city === "Mobay" && jsonBody[i].isRainy === false) {
                         document.getElementById("mobayCondition").innerHTML = "Sunny";
                         document.getElementById("mobayIcon").setAttribute("src", "images/sunny-icon.png");
-                    } else if (jsonBody[i].mobayIsRainy === true) {
+                    } else if (jsonBody[i].city === "Mobay" && jsonBody[i].isRainy === true) {
                         document.getElementById("mobayCondition").innerHTML = "Rainy";
                         document.getElementById("mobayIcon").setAttribute("src", "images/rain.png");
                     }
 
-                    if (jsonBody[i].kingstonIsRainy === false) {
+                    if (jsonBody[i].city === "Kingston" && jsonBody[i].isRainy === false) {
                         document.getElementById("kingstonCondition").innerHTML = "Sunny";
                         document.getElementById("kgnIcon").setAttribute("src", "images/sunny-icon.png");
-                    } else if (jsonBody[i].kingstonIsRainy === true) {
+                    } else if (jsonBody[i].city === "Kingston" && jsonBody[i].isRainy === true) {
                         document.getElementById("kingstonCondition").innerHTML = "Rainy";
                         document.getElementById("kgnIcon").setAttribute("src", "images/rain.png");
                     }
@@ -59,7 +59,7 @@ document.getElementById("submitEmail").onclick = function () {
     };
 
     $.ajax({
-        url: "http://localhost:8080/forecast",
+        url: "http://localhost:8080/email",
         type: "POST",
         dataType: 'json',
         contentType: 'application/json',
