@@ -26,7 +26,7 @@ var job = scheduler.scheduleJob(scheduler.rule, function() {
             for(var y = 0; y < placeData.location.length; y++) {
                 if (result.city === placeData.location[y].city &&
                     data.employees[x].city === placeData.location[y].city) {
-                    mailer.sendEmail(result.isRainy, x);
+                    mailer.sendEmail(result.forecast[1].isRainy, x);
                 }
             }
         }
