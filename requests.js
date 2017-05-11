@@ -6,7 +6,6 @@ function makeRequest(city, country, callback) {
         function (error, response, body) {
             var jsonBody = JSON.parse(body); // Convert response body to JSON object
             var forecast = [];
-            var dateTime;
 
             for (var i = 0; i < jsonBody.list.length; i++) {
                 var isRainy = false;
@@ -15,10 +14,11 @@ function makeRequest(city, country, callback) {
                     if(city === placeData.location[y].city){
                         if (jsonBody.list[i].weather[0].main === "Rain") isRainy = true;
                         forecast.push({
-                                        isRainy: isRainy,
-                                        dateTime: jsonBody.list[i].dt,
-                                        desc: jsonBody.list[i].weather[0].description
-                                     });
+                            isRainy: isRainy,
+                            dateTime: jsonBody.list[i].dt,
+                            desc: jsonBody.list[i].weather[0].description,
+                            main: jsonBody.list[i].weather[0].main
+                         });
                     }
                 }
             }

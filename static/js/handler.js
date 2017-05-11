@@ -80,7 +80,7 @@ document.getElementById("requestForecast").onclick = function () {
             }
         }
     };
-    xmlhttp.open("GET", "https://forecastchecker.herokuapp.com//forecast", true);
+    xmlhttp.open("GET", "https://forecastchecker.herokuapp.com/forecast", true);
     xmlhttp.send();
 };
 
@@ -96,7 +96,7 @@ document.getElementById("submitEmail").onclick = function () {
     };
 
     $.ajax({
-        url: "https://forecastchecker.herokuapp.com//email",
+        url: "https://forecastchecker.herokuapp.com/email",
         type: "POST",
         dataType: 'json',
         contentType: 'application/json',
