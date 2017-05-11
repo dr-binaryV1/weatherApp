@@ -18,11 +18,11 @@
     <div style="width: 100%" id="forecasts"></div>
     <div id="requestForecast" style="width: 100%; float: left" align="center">
         <br /><br /><br />
-        <input type="button" id="request" class="btn btn-primary" value="Send Request">
+        <input type="button" id="request" class="btn btn-primary btn-lg" value="Send Request">
         <br /><br />
         <p id="reqResult"></p>
     </div>
-    <div id="emailForm" align="center">
+    <div id="emailForm" align="center" style="display: none">
         <h2 align="center">Send Email to Employees</h2>
         <form id="send_email">
             <select id="cityOption" class="btn btn-default dropdown-toggle">
@@ -35,7 +35,8 @@
             </select>
             <br />
             <br />
-            <textarea id="messageBody" placeholder="Enter email to be sent here..." class="form-control" maxlength="1000" style="width: 50%; height: 40%;"></textarea>
+            <textarea id="messageBody" placeholder="Enter email to be sent here..." class="form-control"
+                      maxlength="1000" style="width: 50%; height: 40%;" cols="5"></textarea>
             <br />
             <input type="button" value="Send Email" class="btn btn-default" id="submitEmail" disabled>
         </form>

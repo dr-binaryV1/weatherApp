@@ -5,26 +5,25 @@ document.getElementById("requestForecast").onclick = function () {
         if (xmlhttp.readyState === XMLHttpRequest.DONE ) {
             if (xmlhttp.status === 200) {
                 document.getElementById("submitEmail").disabled = false;
+                document.getElementById("emailForm").style.display = "block";
 
                 var jsonBody = JSON.parse(xmlhttp.responseText);
 
-                function getIsRainy(index, i){
-                    if(jsonBody[index].forecast[i].isRainy === false){
-                        return "Sunny";
-                    } else {
-                        return "Rainy";
-                    }
-                }
-
                 function getIcon(index, i){
-                    if(jsonBody[index].forecast[i].isRainy === false){
-                        return "../images/sunny-icon.png";
-                    } else {
+                    if(jsonBody[index].forecast[i].isRainy === true &&
+                        jsonBody[index].forecast[i].desc === "light rain"){
+                        return "../images/light_rain.png";
+                    } else if (jsonBody[index].forecast[i].isRainy === true) {
                         return "../images/rain.png";
+                    } else if (jsonBody[index].forecast[i].isRainy === false &&
+                        jsonBody[index].forecast[i].desc === "few clouds") {
+                        return "../images/cloudy.png";
+                    } else {
+                        return "../images/sunny-icon.png";
                     }
                 }
 
-                function getLabel(index, i){
+                function getDay(index, i){
                     if(index === 0){
                         return "Today";
                     } else if(index === 1) {
@@ -38,22 +37,26 @@ document.getElementById("requestForecast").onclick = function () {
                     }
                 }
 
+                document.getElementById("forecasts").innerHTML = "";
+                document.getElementById("cityOption").innerHTML = "";
                 for(var i=0; i < jsonBody.length; i++) {
                     document.getElementById("forecasts").innerHTML += "<br>" +
-                        "<div id='"+jsonBody[i].city+"forecast' align='center' style='width: 100%; float: right'>" +
+                        "<div id='"+jsonBody[i].city+"forecast' align='center' " +
+                        "style='width: 100%; float: right; margin-left: 2%'>" +
                             "<h1 align='center'>"+ jsonBody[i].city +" Forecast</h1>" +
                         "</div>";
+
                     for(var y = 0; y < jsonBody[i].forecast.length; y++){
                         document.getElementById(jsonBody[i].city+"forecast").innerHTML += "" +
-                            "<div style='float:left'>" +
-                            "<h2>"+ getLabel(y, i) +"</h2>" +
-                            "<h4>"+ getIsRainy(i, y) +"</h4>" +
+                            "<div style='float:left; margin-right: 2%' align='center'>" +
+                            "<h2>"+ getDay(y, i) +"</h2>" +
+                            "<h4>"+ jsonBody[i].forecast[y].main +"</h4>" +
                             "<p>"+ jsonBody[i].forecast[y].desc +"</p>" +
-                            "<img src='"+ getIcon(i, y) +"' width='250' height='250' />" +
+                            "<img src='"+ getIcon(i, y) +"' width='230' height='230' />" +
                             "</div>"
                     }
 
-                    document.getElementById("forecasts").innerHTML += "<br/>";
+                    document.getElementById("forecasts").innerHTML += "<hr>";
 
                     document.getElementById("cityOption").innerHTML += "<option id='"+jsonBody[i].city+
                         "'>"+jsonBody[i].city+"</option>"
@@ -77,7 +80,7 @@ document.getElementById("requestForecast").onclick = function () {
             }
         }
     };
-    xmlhttp.open("GET", "http://localhost:8080/forecast", true);
+    xmlhttp.open("GET", "https://forecastchecker.herokuapp.com//forecast", true);
     xmlhttp.send();
 };
 
@@ -93,7 +96,7 @@ document.getElementById("submitEmail").onclick = function () {
     };
 
     $.ajax({
-        url: "http://localhost:8080/email",
+        url: "https://forecastchecker.herokuapp.com//email",
         type: "POST",
         dataType: 'json',
         contentType: 'application/json',
