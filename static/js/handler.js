@@ -16,9 +16,9 @@ $(document).ready(function() {
                             return "../images/light_rain.png";
                         } else if (jsonBody[index].forecast[i].isRainy === true &&
                             jsonBody[index].forecast[i].desc === "heavy intensity rain") {
-                            return "../images/heavy_rain.png";cd
+                            return "../images/rain.png";
                         } else {
-                            return "../images/rain.png"
+                            return "../images/heavy_rain.png";
                         } else if (jsonBody[index].forecast[i].isRainy === false &&
                             jsonBody[index].forecast[i].desc === "few clouds") {
                             return "../images/cloudy.png";
