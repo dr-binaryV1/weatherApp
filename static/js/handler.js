@@ -15,8 +15,8 @@ $(document).ready(function() {
                             jsonBody[index].forecast[i].desc === "light rain") {
                             return "../images/light_rain.png";
                         } else if (jsonBody[index].forecast[i].isRainy === true &&
-                            jsonBody[index].forecast[i].desc === "heavy intense rain") {
-                            return "../images/heavy_rain.png";
+                            jsonBody[index].forecast[i].desc === "heavy intensity rain") {
+                            return "../images/heavy_rain.png";cd
                         } else {
                             return "../images/rain.png"
                         } else if (jsonBody[index].forecast[i].isRainy === false &&
