@@ -5,8 +5,8 @@ var data = require('./db/file/employees.json');
 var transporter = nodeMailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'Enter Email Here', // Enter administrative email here
-        pass: 'Enter Password Here' // Enter Password for email here
+        user: 'developerdamian@gmail.com', // Enter administrative email here
+        pass: 'damian101' // Enter Password for email here
     }
 });
 
