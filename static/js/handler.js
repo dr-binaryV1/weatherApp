@@ -82,7 +82,7 @@ $(document).ready(function() {
                 }
             }
         };
-        xmlhttp.open("GET", "http://forecastchecker.herokuapp.com/forecast", true);
+        xmlhttp.open("GET", "http://localhost:8080/forecast", true);
         xmlhttp.send();
     });
 
@@ -92,13 +92,13 @@ $(document).ready(function() {
         var city = $("#cityOption");
 
         var jsonData = {
-            city: city.value,
-            recipients: participants.value,
-            body: emailBody.value
+            city: city.val(),
+            recipients: participants.val(),
+            body: emailBody.val()
         };
 
         $.ajax({
-            url: "http://forecastchecker.herokuapp.com/email",
+            url: "http://localhost:8080/email",
             type: "POST",
             dataType: 'json',
             contentType: 'application/json',
